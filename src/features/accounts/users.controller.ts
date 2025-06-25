@@ -1,11 +1,5 @@
 import {
-  Controller,
-  Get,
-  Param,
-  ParseUUIDPipe,
-  Req,
-  UseGuards,
-  Post,
+  Controller,  Get,  Param,  ParseUUIDPipe,  Req,  UseGuards,  Post,
 } from '@nestjs/common';
 import { Request } from 'express';
 import { UserDto } from './dto/user.dto';
@@ -55,6 +49,7 @@ export class UsersController {
   @Post('/refresh-session')
   async refreshSession(@Req() req: Request) {
     const user = await this.usersService.validateAndGetUser(req.user.email);
-    return { message: 'Session refreshed', user: req.user };
+    // return { message: 'Session refreshed', user: req.user };
+    return { message: 'Session refreshed', user: user };
   }
 }
